@@ -18,7 +18,7 @@ interface ServiceRegistryInterface
     /**
      * @return array
      */
-    public function all(): array;
+    public function all();
 
     /**
      * @param string $identifier
@@ -27,21 +27,21 @@ interface ServiceRegistryInterface
      * @throws ExistingServiceException
      * @throws \InvalidArgumentException
      */
-    public function register(string $identifier, $service): void;
+    public function register(string $identifier, $service);
 
     /**
      * @param string $identifier
      *
      * @throws NonExistingServiceException
      */
-    public function unregister(string $identifier): void;
+    public function unregister(string $identifier);
 
     /**
      * @param string $identifier
      *
      * @return bool
      */
-    public function has(string $identifier): bool;
+    public function has(string $identifier);
 
     /**
      * @param string $identifier

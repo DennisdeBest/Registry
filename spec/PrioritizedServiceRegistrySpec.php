@@ -23,17 +23,17 @@ use Zend\Stdlib\PriorityQueue;
 
 final class PrioritizedServiceRegistrySpec extends ObjectBehavior
 {
-    function let(): void
+    function let()
     {
         $this->beConstructedWith(SampleServiceInterface::class);
     }
 
-    function it_implements_prioritized_service_registry_interface(): void
+    function it_implements_prioritized_service_registry_interface()
     {
         $this->shouldImplement(PrioritizedServiceRegistryInterface::class);
     }
 
-    function it_initializes_services_priority_queue_by_default(): void
+    function it_initializes_services_priority_queue_by_default()
     {
         $this->all()->shouldReturnAnInstanceOf(PriorityQueue::class);
 
@@ -44,7 +44,7 @@ final class PrioritizedServiceRegistrySpec extends ObjectBehavior
         SampleServiceInterface $serviceOne,
         SampleServiceInterface $serviceTwo,
         SampleServiceInterface $serviceThree
-    ): void {
+    ) {
         $this->has($serviceOne)->shouldReturn(false);
         $this->has($serviceTwo)->shouldReturn(false);
         $this->has($serviceThree)->shouldReturn(false);
@@ -63,7 +63,7 @@ final class PrioritizedServiceRegistrySpec extends ObjectBehavior
         $this->all()->shouldHavePriority(-1);
     }
 
-    function it_throws_exception_when_trying_to_register_service_without_required_interface(\stdClass $service): void
+    function it_throws_exception_when_trying_to_register_service_without_required_interface(\stdClass $service)
     {
         $this
             ->shouldThrow(\InvalidArgumentException::class)
@@ -73,14 +73,14 @@ final class PrioritizedServiceRegistrySpec extends ObjectBehavior
 
     function it_throws_exception_when_trying_to_check_for_a_registered_service_without_required_interface(
         \stdClass $service
-    ): void {
+    ) {
         $this
             ->shouldThrow(\InvalidArgumentException::class)
             ->duringHas($service)
         ;
     }
 
-    function it_unregisters_service(SampleServiceInterface $service): void
+    function it_unregisters_service(SampleServiceInterface $service)
     {
         $this->register($service);
         $this->has($service)->shouldReturn(true);
@@ -89,7 +89,7 @@ final class PrioritizedServiceRegistrySpec extends ObjectBehavior
         $this->has($service)->shouldReturn(false);
     }
 
-    function it_throws_exception_if_trying_to_unregister_service_of_non_existing_type(SampleServiceInterface $service): void
+    function it_throws_exception_if_trying_to_unregister_service_of_non_existing_type(SampleServiceInterface $service)
     {
         $this
             ->shouldThrow(NonExistingServiceException::class)

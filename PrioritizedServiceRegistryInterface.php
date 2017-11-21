@@ -18,7 +18,7 @@ interface PrioritizedServiceRegistryInterface
     /**
      * @return iterable
      */
-    public function all(): iterable;
+    public function all();
 
     /**
      * @param object $service
@@ -27,19 +27,19 @@ interface PrioritizedServiceRegistryInterface
      * @throws ExistingServiceException
      * @throws \InvalidArgumentException
      */
-    public function register($service, int $priority = 0): void;
+    public function register($service, int $priority = 0);
 
     /**
      * @param object $service
      *
      * @throws NonExistingServiceException
      */
-    public function unregister($service): void;
+    public function unregister($service);
 
     /**
      * @param object $service
      *
      * @return bool
      */
-    public function has($service): bool;
+    public function has($service);
 }

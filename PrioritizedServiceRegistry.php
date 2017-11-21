@@ -51,7 +51,7 @@ final class PrioritizedServiceRegistry implements PrioritizedServiceRegistryInte
     /**
      * {@inheritdoc}
      */
-    public function all(): iterable
+    public function all()
     {
         return $this->services;
     }
@@ -59,7 +59,7 @@ final class PrioritizedServiceRegistry implements PrioritizedServiceRegistryInte
     /**
      * {@inheritdoc}
      */
-    public function register($service, int $priority = 0): void
+    public function register($service, int $priority = 0)
     {
         $this->assertServiceHaveType($service);
         $this->services->insert($service, $priority);
@@ -68,7 +68,7 @@ final class PrioritizedServiceRegistry implements PrioritizedServiceRegistryInte
     /**
      * {@inheritdoc}
      */
-    public function unregister($service): void
+    public function unregister($service)
     {
         if (!$this->has($service)) {
             throw new NonExistingServiceException($this->context, gettype($service), array_keys($this->services->toArray()));
@@ -80,7 +80,7 @@ final class PrioritizedServiceRegistry implements PrioritizedServiceRegistryInte
     /**
      * {@inheritdoc}
      */
-    public function has($service): bool
+    public function has($service)
     {
         $this->assertServiceHaveType($service);
 
@@ -90,7 +90,7 @@ final class PrioritizedServiceRegistry implements PrioritizedServiceRegistryInte
     /**
      * @param object $service
      */
-    private function assertServiceHaveType($service): void
+    private function assertServiceHaveType($service)
     {
         Assert::isInstanceOf(
             $service,

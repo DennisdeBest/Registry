@@ -17,22 +17,22 @@ use PhpSpec\ObjectBehavior;
 
 final class NonExistingServiceExceptionSpec extends ObjectBehavior
 {
-    function let(): void
+    function let()
     {
         $this->beConstructedWith('renderer', 'foo', ['service1', 'service2']);
     }
 
-    function it_is_an_exception(): void
+    function it_is_an_exception()
     {
         $this->shouldHaveType(\Exception::class);
     }
 
-    function it_is_an_invalid_argument_exception(): void
+    function it_is_an_invalid_argument_exception()
     {
         $this->shouldHaveType(\InvalidArgumentException::class);
     }
 
-    function it_should_show_the_context_and_available_services_in_the_message(): void
+    function it_should_show_the_context_and_available_services_in_the_message()
     {
         $this->getMessage()->shouldReturn('Renderer service "foo" does not exist, available renderer services: "service1", "service2"');
     }
